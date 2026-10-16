@@ -29,5 +29,5 @@ A GM (Game Master) leading a Lasers & Feelings game needs a software to run the 
 4. **user04**: As a GM, I want to track ship status and enemy threat levels during an encounter so that all players have a clear, shared understanding of the current game state.
 
 ## Sprint 1 Backlog
-- (Not started) **user01**: As a player, I want to throw a dice, because the result of the throw determines if I succeed or not in whatever I am trying to do.
+- (in Progress) **user01**: As a player, I want to throw a dice, because the result of the throw determines if I succeed or not in whatever I am trying to do.
 - (Not started) **user02**: As a player, I want to create and save my character data sheet so that my character stats are easily available during play.
