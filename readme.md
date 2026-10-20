@@ -33,5 +33,5 @@ A GM (Game Master) leading a Lasers & Feelings game needs a software to run the 
 - (Done) **user02**: As a player, I want to create and save my character data sheet so that my character stats are easily available during play.
 
 ## Sprint 2 Backlog
-- (In progress) **user03**: As a GM, I want to generate a random adventure prompt so that I can quickly start a game session automatically.
-- (Not started) **user04**: As a GM, I want to track ship status and enemy threat levels during an encounter so that all players have a clear, shared understanding of the current game state.
+- (Done) **user03**: As a GM, I want to generate a random adventure prompt so that I can quickly start a game session automatically.
+- (In progress) **user04**: As a GM, I want to track ship status and enemy threat levels during an encounter so that all players have a clear, shared understanding of the current game state.
