@@ -30,4 +30,4 @@ A GM (Game Master) leading a Lasers & Feelings game needs a software to run the 
 
 ## Sprint 1 Backlog
 - (Done) **user01**: As a player, I want to throw a dice, because the result of the throw determines if I succeed or not in whatever I am trying to do.
-- (In progress) **user02**: As a player, I want to create and save my character data sheet so that my character stats are easily available during play.
+- (Done) **user02**: As a player, I want to create and save my character data sheet so that my character stats are easily available during play.

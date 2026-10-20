@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Lasers & Feelings</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f4f4f4;
+      color: #222;
+      margin: 0;
+      padding: 40px 16px;
+    }
+    .page {
+      max-width: 560px;
+      margin: 0 auto;
+    }
+    h1 {
+      font-size: 28px;
+      font-weight: normal;
+      margin: 0 0 24px;
+    }
+    h2 {
+      font-size: 18px;
+      font-weight: normal;
+      margin: 0 0 16px;
+    }
+    .card {
+      background: white;
+      border: 1px solid #ddd;
+      border-radius: 12px;
+      padding: 24px;
+      margin-bottom: 20px;
+    }
+    label {
+      display: block;
+      font-size: 14px;
+      color: #666;
+      margin-bottom: 4px;
+    }
+    select, input[type="text"] {
+      width: 100%;
+      padding: 8px;
+      font-size: 15px;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+      background: white;
+      box-sizing: border-box;
+    }
+    .row {
+      display: flex;
+      gap: 12px;
+      margin-bottom: 16px;
+    }
+    .row > div {
+      flex: 1;
+    }
+    .options {
+      display: flex;
+      gap: 12px;
+      margin-bottom: 16px;
+    }
+    .options label {
+      flex: 1;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      margin: 0;
+      padding: 10px;
+      color: #222;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+      cursor: pointer;
+    }
+    button {
+      padding: 10px 24px;
+      font-size: 15px;
+      color: white;
+      background: #222;
+      border: none;
+      border-radius: 999px;
+      cursor: pointer;
+    }
+    button:hover {
+      background: #444;
+    }
+    button.small {
+      padding: 4px 12px;
+      font-size: 13px;
+      background: white;
+      color: #222;
+      border: 1px solid #ccc;
+    }
+    .dice {
+      display: flex;
+      gap: 10px;
+      margin: 20px 0 12px;
+      min-height: 56px;
+    }
+    .die {
+      width: 56px;
+      height: 56px;
+      line-height: 56px;
+      text-align: center;
+      font-size: 24px;
+      border: 2px solid #222;
+      border-radius: 10px;
+      background: white;
+    }
+    .die.success {
+      background: #222;
+      color: white;
+    }
+    .die.match {
+      border-radius: 50%;
+      border-style: dashed;
+    }
+    .result {
+      min-height: 24px;
+      margin: 0;
+    }
+    .note {
+      font-size: 14px;
+      color: #666;
+      margin: 8px 0 0;
+    }
+    ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+    li {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 12px 0;
+      border-top: 1px solid #eee;
+    }
+    li:first-child {
+      border-top: none;
+    }
+    .badge {
+      display: inline-block;
+      width: 28px;
+      height: 28px;
+      line-height: 28px;
+      text-align: center;
+      margin-right: 10px;
+      border: 2px solid #222;
+      border-radius: 50%;
+      font-size: 14px;
+    }
+  </style>
+</head>
+<body>
+  <div class="page">
+    <h1>Lasers &amp; Feelings</h1>
+ 
+    <!-- Dice roller (user01) -->
+    <div class="card">
+      <h2>Roll the dice</h2>
+      <div class="row">
+        <div>
+          <label for="number">Number (2-5)</label>
+          <select id="number">
+            <option>2</option>
+            <option>3</option>
+            <option selected>4</option>
+            <option>5</option>
+          </select>
+        </div>
+        <div>
+          <label for="count">Dice (1-3)</label>
+          <select id="count">
+            <option>1</option>
+            <option>2</option>
+            <option>3</option>
+          </select>
+        </div>
+      </div>
+      <div class="options">
+        <label><input type="radio" name="kind" value="lasers" checked> Lasers (under)</label>
+        <label><input type="radio" name="kind" value="feelings"> Feelings (over)</label>
+      </div>
+      <button onclick="rollDice()">Roll</button>
+      <div class="dice" id="dice"></div>
+      <p class="result" id="result"></p>
+      <p class="note">Filled square = success. Dashed circle = matches your number.</p>
+    </div>
+ 
+    <!-- Character sheet (user02) -->
+    <div class="card">
+      <h2>Create a character</h2>
+      <div style="margin-bottom: 16px;">
+        <label for="name">Name</label>
+        <input type="text" id="name">
+      </div>
+      <div class="row">
+        <div>
+          <label for="style">Style</label>
+          <select id="style">
+            <option>Alien</option>
+            <option>Android</option>
+            <option>Dangerous</option>
+            <option>Heroic</option>
+            <option>Hot-Shot</option>
+            <option>Intrepid</option>
+            <option>Savvy</option>
+          </select>
+        </div>
+        <div>
+          <label for="role">Role</label>
+          <select id="role">
+            <option>Barkeep</option>
+            <option>Doctor</option>
+            <option>Envoy</option>
+            <option>Engineer</option>
+            <option>Explorer</option>
+            <option>Pilot</option>
+            <option>Scientist</option>
+            <option>Soldier</option>
+          </select>
+        </div>
+        <div>
+          <label for="charNumber">Number</label>
+          <select id="charNumber">
+            <option>2</option>
+            <option>3</option>
+            <option selected>4</option>
+            <option>5</option>
+          </select>
+        </div>
+      </div>
+      <button onclick="saveCharacter()">Save character</button>
+      <p class="note" id="message"></p>
+    </div>
+ 
+    <div class="card">
+      <h2>Saved characters</h2>
+      <ul id="list"></ul>
+    </div>
+  </div>
+ 
+  <script>
+    // ----- Dice roller (user01) -----
+    function rollDice() {
+      var number = Number(document.getElementById("number").value);
+      var count = Number(document.getElementById("count").value);
+      var kind = document.querySelector('input[name="kind"]:checked').value;
+ 
+      var diceBox = document.getElementById("dice");
+      diceBox.innerHTML = "";
+      var successes = 0;
+      var laserFeeling = false;
+ 
+      for (var i = 0; i < count; i++) {
+        var roll = Math.floor(Math.random() * 6) + 1;
+        var die = document.createElement("div");
+        die.className = "die";
+        die.textContent = roll;
+ 
+        if (roll === number) {
+          laserFeeling = true;
+          die.className = "die match";
+        } else if (kind === "lasers" && roll < number) {
+          successes++;
+          die.className = "die success";
+        } else if (kind === "feelings" && roll > number) {
+          successes++;
+          die.className = "die success";
+        }
+        diceBox.appendChild(die);
+      }
+ 
+      var text = successes + " success(es). ";
+      if (successes === 0) {
+        text += "It goes wrong.";
+      } else if (successes === 1) {
+        text += "You barely do it.";
+      } else if (successes === 2) {
+        text += "You do it.";
+      } else {
+        text += "Critical success!";
+      }
+      if (laserFeeling) {
+        text += " LASER FEELING! Ask the GM a question.";
+      }
+      document.getElementById("result").textContent = text;
+    }
+ 
+    // ----- Character sheet (user02) -----
+    function getCharacters() {
+      var saved = localStorage.getItem("characters");
+      if (saved) {
+        return JSON.parse(saved);
+      }
+      return [];
+    }
+ 
+    function saveCharacter() {
+      var name = document.getElementById("name").value;
+      if (name === "") {
+        document.getElementById("message").textContent = "Please enter a name.";
+        return;
+      }
+ 
+      var characters = getCharacters();
+      characters.push({
+        name: name,
+        style: document.getElementById("style").value,
+        role: document.getElementById("role").value,
+        number: document.getElementById("charNumber").value
+      });
+      localStorage.setItem("characters", JSON.stringify(characters));
+ 
+      document.getElementById("name").value = "";
+      document.getElementById("message").textContent = "Saved!";
+      showCharacters();
+    }
+ 
+    function deleteCharacter(index) {
+      var characters = getCharacters();
+      characters.splice(index, 1);
+      localStorage.setItem("characters", JSON.stringify(characters));
+      showCharacters();
+    }
+ 
+    function showCharacters() {
+      var characters = getCharacters();
+      var list = document.getElementById("list");
+      list.innerHTML = "";
+ 
+      if (characters.length === 0) {
+        list.innerHTML = "<li>No characters saved yet.</li>";
+        return;
+      }
+ 
+      for (var i = 0; i < characters.length; i++) {
+        var c = characters[i];
+        var item = document.createElement("li");
+ 
+        var info = document.createElement("span");
+        info.innerHTML = '<span class="badge">' + c.number + "</span>";
+        info.appendChild(document.createTextNode(c.name + " - " + c.style + " " + c.role));
+        item.appendChild(info);
+ 
+        var button = document.createElement("button");
+        button.className = "small";
+        button.textContent = "Delete";
+        button.setAttribute("onclick", "deleteCharacter(" + i + ")");
+        item.appendChild(button);
+ 
+        list.appendChild(item);
+      }
+    }
+ 
+    showCharacters();
+  </script>
+</body>
+</html>
